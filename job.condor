@@ -1,0 +1,46 @@
+##
+# Uso: condor_submit submit.condor
+# Universo a utilizar, por lo general será vanilla para ejecutables
+# y docker para contenedores.
+#Universe   = vanilla
+Universe   = docker
+
+# Contenedor a usar
+docker_image=victor7178/lapack_victor2
+
+# Habilitar transferencia de archivos.
+should_transfer_files = Yes
+# Habilitar transferencia de salidas al terminar o fallar.
+when_to_transfer_output = ON_EXIT_OR_EVICT
+# Lista de archivos y directorios extra a enviar al nodo.
+# Si se agrega / al final del nombre de la carpeta se copia el contenido no la carpeta
+transfer_input_files=code,run.sh
+
+# copiar de regreso carpeta
+transfer_output_files=code
+
+
+# Nombre del archivo a ejecutar.
+# Si es un script, debe tener permisos de ejecucion (chmod +x run.sh)
+Executable = /bin/bash 
+Arguments  = -x run.sh
+# Argumentos a pasar al ejecutable.
+#Arguments  = makefile
+
+# Archivo para guardar el registro de la ejecución de la tarea.
+Log = Rlog_$(Cluster).txt
+# Si se requiere un archivo de entrada para el ejecutable
+# se debe indicar aquí.
+#Input = in$(Process).r
+# Archivo donde se guardaran todas las salidas "correctas" del ejecutable.
+Output = Rout_$(Cluster)_$(Process).txt
+# Archivo donde se guardaran todos los mensajes de error del ejecutable.
+Error = Rerr_$(Cluster)_$(Process).txt
+
+# Solicitar 3 cores y 2G de memoria para cada tarea.
+request_cpus = 6
+request_memory = 15G
+# Si la tarea requiere GPUs, solicitarlas.
+
+# Enviar 4 tareas para su procesamiento.
+Queue 
