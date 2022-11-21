@@ -1,0 +1,14 @@
+This program takes a file with Bspline coeficients and generates a file with the wave function evaluate in a regular grid.
+
+This regular grid is constructed by dividing the space in intervals (xmax-xmin)/nb where nb is the number of Bsplines, 
+then it can be further divided by nquad making a equidistance grid of nb*nquad points separated by (xmax-xmin)/(nb*nquad) .
+
+The output file name is 009999inputfilename.
+
+In the input file put the name of the file, order of bsplines, number of Bsplines, xmax,xmin and nquad to use
+
+to compile the code just type
+ make test
+ 
+to run the code use
+ make run

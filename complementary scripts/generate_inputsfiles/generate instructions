@@ -1,0 +1,21 @@
+generate input is a program that generates input files from an example file called inschrodinger_poisson_bsplines.dat
+this program generate multiple inputfiles with different name for the initial condition prein00.dat   
+
+to compile and run the program use:
+gfortran generate-infile-h-artificial.f90;./a.out<inschrodinger_poisson_bsplines.dat
+
+to run these files type either 
+
+find . -type f -name "initial*.dat" -exec ./tt < {} 
+
+FILES=initial1"*".dat;for file in $FILES; do ./tt< $file; done
+
+FILES=cs1dt4L100n20000a"*"initial.dat;for file in $FILES; do ./tt< $file; done
+
+!**************************************************************
+
+time find . -type f -name "input*.dat" | parallel "./tt < {}"
+FILES=input"*".dat;time for file in $FILES; do ./tt< $file; done
+
+
+

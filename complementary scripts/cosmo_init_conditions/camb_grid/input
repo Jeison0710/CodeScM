@@ -1,0 +1,8 @@
+fdmpowerspectrum.csv	!name
+500000              !number points grid
+4348     !inputnot.
+0.0d0	!xmin
+5003.0d0	!xmax
+#20          !number of points in each interval nmax
+
+

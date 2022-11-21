@@ -1,0 +1,8 @@
+fina200k.dat	!name
+4               !order of bsplines
+200000     !number of bsplines for the initial knot sequence (assumed an uniform knot sequence).
+-2437.24d0	!xmin
+2437.24d0	!xmax
+20          !number of points in each interval nmax
+
+

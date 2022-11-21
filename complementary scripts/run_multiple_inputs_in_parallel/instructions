@@ -1,0 +1,9 @@
+runer is a subroutine that runs in parallel a set of inputs ("initial00.dat" ...."initial29.dat") using OMP_LIB.to change the number of files or the name of the inputs modify    prefile and postfile variables with mtot.
+
+to compile run
+
+gfortran runer.f90 -o parallel.exe -fopenmp 
+
+to run just type 
+
+./parallel.exe
