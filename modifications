@@ -1,0 +1,40 @@
+     IF(((MOD(aat(it),0.01_RT).lt.aat(it+1)-aat(it)).and.(aat(it)-0.1_RT.le.aat(it+1)-aat(it)))) THEN 
+        cont=cont+1
+        time=cont!*10
+        CALL calculate_norm(anorm1,cont)
+        WRITE(*,*)'norm^2= ', it*dt,aat(it),time,anorm1
+        time=cont!*10
+        WRITE(4,*)it,it*dt,anorm1
+        If (discoef.eq.1)then
+           CALL store_coef('evol',time)
+    	else  
+     	   CALL store_distr(time)
+     	end if 
+       ! CALL store_coef('evol',time)
+     END IF
+    ! CALL tiempo(taux6) 
+     !taux6=taux6-taux
+     !write(*,*)"writing time is ", taux6
+     !stop
+     !save states in nshow after time step change
+    ! IF((MOD(it,nshow)==0).and.(it.gt.nt1)) THEN
+     !if ((pc.eq.1).and.((MOD(aat(t),0.1_RT).lt.aat(t+1)-aat(t)).and.(aat(t)-0.1_RT.le.aat(t+1)-aat(t))) )then
+  !if ((pc.eq.1).and.((MOD(aat(t),0.01_RT).lt.aat(t+1)-aat(t)).and.(aat(t)-0.1_RT.gt.aat(t+1)-aat(t))).or.(t.eq.nt) )then
+     IF(((MOD(aat(it),0.1_RT).lt.aat(it+1)-aat(it)).and.(aat(it)-0.1_RT.gt.aat(it+1)-aat(it))).or.(it.eq.nt)) THEN
+        !cont=cont+1
+        !time=int(16.9/(dt0*nshow))
+        !time=int((10*nt1)/nshow)
+        !time=time+(cont-int((nt1)/nshow))
+        cont=cont+10
+        time=cont!*10
+        CALL calculate_norm(anorm1,cont)
+        WRITE(*,*)'norm^2= ', dble(dt0*(nt1)) +dble(dtada*(it-nt1)),aat(it),time,anorm1
+        WRITE(4,*)it,it*dt,anorm1
+        
+        If (discoef.eq.1)then
+           CALL store_coef('evol',time)
+    	else  
+     	   CALL store_distr(time)
+     	end if 
+       ! CALL store_coef('evol',time)
+     END IF

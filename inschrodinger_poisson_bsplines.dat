@@ -1,0 +1,26 @@
+# !	--Data for the initial gaussian wave packet
+8.0d0            !sigma
+0.0d0           !x0 
+-0.0d0          !p0 
+0.1d1          	!g: Gross-Pitaevskii parameter
+3      !ran select initial condition , 1 for cosine and 2 for random phase 3 for textfile
+prein00.dat      !name of initial condition text file 
+19            !Nran number of points ran initial cond (Nran>3)
+# !     --Data for the Bspline basis
+4               !kp:	order of the bsplines
+500
+-250d0		!xmin:	start of the box
+250d0		!xmax:	end of the box (usually rmin=-rmax)
+26		!nquad:	number of quadrature points (Legendre-Gauss quadrature) in each interval
+2.5d0           !tfin:  final time in scaled units
+1.0d-4          !dt0:  time step in scaled units
+9.90099009900990111d-3              ! 1.99600798d-3   ! ainit at t=0
+1.000d0           !aend 
+# !     --Other parameters 
+10000		!show: Information (norm) is displayed every nshow steps
+5.20218d0           !from where start to save states on nshow steps
+2.51d2           !where to end save states shown on nshow steps
+n               !print_all: 'y' output files contain psi(x_i) for all quadrature points
+                !           'n' output files contain psi(x_i) for one quadrature point per breakpoint
+1               !V0_switch: 0/1 => switch off/on the potential 
+0		!save 0 to save dist or 1 to save coefficients

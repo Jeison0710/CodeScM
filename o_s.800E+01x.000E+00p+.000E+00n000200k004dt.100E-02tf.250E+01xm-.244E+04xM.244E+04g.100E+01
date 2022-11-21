@@ -1,0 +1,39 @@
+==========================================
+******       SUB. print_output      ******
+******  DATA FOR THE INITIAL STATE  ******
+sigma                  =  0.80000000000000E+01
+x0                     =  0.00000000000000E+00
+p0                     = -0.00000000000000E+00
+******  DATA FOR THE BSPLINE BASIS  ******
+Order kp               =      4
+Number of bsplines nb  =    200
+Number of breakpoints l=    197
+Inner breakpoints l0   =    191
+Matrix size nmax       =    191
+Uniform breakpoints
+Endpoints (xmin,xmax)  = (*******,2437.24)
+Grid spacing dx        =  0.25520837696335E+02
+******   DATA FOR THE QUADRATURES   ******
+Num. of quad pts nquad =     14
+Total quadr. points nq =   2758
+Initial quad point nq0 =     42
+# quad points on k nqk =     56
+******       TIME PROPAGATION       ******
+Time step      dt0     =  0.10000000000000E-02
+Final time     tfin    =  0.25000000000000E+01
+******       OTHER PARAMETERS       ******
+nshow                  = 100000
+V0_switch              =      1
+V0                     =  0.10000000000000E+01
+
+******  SUB. initial_wavepacketpbc  ******
+Banded matrices    ntot=    188
+Banded matrices   nlarg=      4
+Banded matrices   nlard=      4
+******        SUB. ini_mtxs         ******
+Banded matrices    ntot=    188
+Banded matrices   nlarg=      4
+Banded matrices   nlard=      4
+******   CRANK-NICOLSON PROPAGATOR  ******
+Time step    dt        =  0.10000000000000E-02
+Number of time steps nt=     66283
