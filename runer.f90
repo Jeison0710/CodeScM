@@ -4,7 +4,7 @@ program runer
   ! INTEGER :: hdferr
   !! INTEGER :: layout
   ! INTEGER(HID_T)  :: file, space, dset, dcpl ! Handles
-   CHARACTER(LEN=7) :: prefile
+   CHARACTER(LEN=5) :: prefile
    CHARACTER(LEN=4) :: postfile
    CHARACTER(LEN=11) :: filename
    CHARACTER(LEN=2) :: x1
