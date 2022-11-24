@@ -219,10 +219,11 @@ SUBROUTINE store_distr(cont)
   INTEGER(ITT) :: cont,i,j,iq
   COMPLEX(CT) :: sumac
   CHARACTER(100) :: filename
+  CHARACTER(100) :: preint
 
+  WRITE(filename,100) initialtext,'Y',cont,'.dat'
+100 FORMAT(a10,a1,i6.6,a4)!100 FORMAT(a4,i6.6,a4)
 
-  WRITE(filename,100)cont,'.dat'
-100 FORMAT(i6.6,a4)
   IF(cont==-1)filename=filedistr    !storing the final distribution
   OPEN(14,file=filename)
   IF(cont==-1) THEN
@@ -552,15 +553,15 @@ SUBROUTINE crank_nicolson_propagator_pbc
       IF(((MOD(aat(it),0.02_RT).lt.aat(it+1)-aat(it)).and.(aat(it)-0.1_RT.le.aat(it+1)-aat(it)))) THEN 
         cont=cont+1
         time=2*cont!*10
-        CALL calculate_norm(anorm1,cont)
-        WRITE(*,*)'norm^2= ', it*dt,aat(it),time,anorm1
+        !CALL calculate_norm(anorm1,cont)
+        WRITE(*,*)'norm^2= ', it*dt,aat(it),time !,anorm1
         !time=2*cont!*10
         WRITE(4,*)it,it*dt,anorm1
-        If (discoef.eq.1)then
+        If (discoef.eq.1)  then
            CALL store_coef('evol',time)
-    	else  
-     	   CALL store_distr(time)
-     	end if 
+    	  else  
+     	     CALL store_distr(time)
+       	end if 
        ! CALL store_coef('evol',time)
      END IF
     ! CALL tiempo(taux6) 
@@ -571,22 +572,22 @@ SUBROUTINE crank_nicolson_propagator_pbc
     ! IF((MOD(it,nshow)==0).and.(it.gt.nt1)) THEN
      !if ((pc.eq.1).and.((MOD(aat(t),0.1_RT).lt.aat(t+1)-aat(t)).and.(aat(t)-0.1_RT.le.aat(t+1)-aat(t))) )then
   !if ((pc.eq.1).and.((MOD(aat(t),0.01_RT).lt.aat(t+1)-aat(t)).and.(aat(t)-0.1_RT.gt.aat(t+1)-aat(t))).or.(t.eq.nt) )then
-     IF(((MOD(aat(it),0.1_RT).lt.aat(it+1)-aat(it)).and.(aat(it)-0.1_RT.gt.aat(it+1)-aat(it))).or.(it.eq.nt)) THEN
+     IF(((MOD(aat(it),0.2_RT).lt.aat(it+1)-aat(it)).and.(aat(it)-0.1_RT.gt.aat(it+1)-aat(it))).or.(it.eq.nt)) THEN
         !cont=cont+1
         !time=int(16.9/(dt0*nshow))
         !time=int((10*nt1)/nshow)
         !time=time+(cont-int((nt1)/nshow))
-        cont=cont+10
+        cont=cont+20
         time=cont!*10
-        CALL calculate_norm(anorm1,cont)
-        WRITE(*,*)'norm^2= ', dble(dt0*(nt1)) +dble(dtada*(it-nt1)),aat(it),time,anorm1
+        !CALL calculate_norm(anorm1,cont)
+        WRITE(*,*)'norm^2= ', dble(dt0*(nt1)) +dble(dtada*(it-nt1)),aat(it),time !,anorm1
         WRITE(4,*)it,it*dt,anorm1
         
         If (discoef.eq.1)then
            CALL store_coef('evol',time)
-    	else  
-     	   CALL store_distr(time)
-     	end if 
+    	  else  
+     	     CALL store_distr(time)
+     	  end if 
        ! CALL store_coef('evol',time)
      END IF
      
